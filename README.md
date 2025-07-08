@@ -18,17 +18,13 @@
 ## 🛠️ Estructura del Repositorio
 
 - **Labs/** 📄: PDFs de los laboratorios (`Laboratorio_I.pdf`, `Laboratorio_II.pdf`, `Laboratorio_III.pdf`).
-- **Scripts/** 💻: Scripts SQL (`SQL_covid_worldwide.sql`, `SQL_best_recovery.sql`) y notebooks de Spark (`nbk_covid_BZ_to_SZ.ipynb`, `nbk_covid_SZ_to_GZ.ipynb`).
-- **Data/** 📈: Archivos de datos de ejemplo (`Athletes.csv`, `covid_worldwide_rc.csv`) o placeholders. Obtén los originales del aula virtual.
-- **Pipelines/** 🔗: Configuraciones de pipelines como `LZ_to_BZ_Athletes_pipeline.json` para Azure Data Factory.
-- **Docs/** 📖:
-  - `setup_guide.md`: Guía para configurar tu entorno Azure.
-  - `prerequisites.md`: Lista de requisitos para empezar.
-  - `troubleshooting.md`: Soluciones a problemas comunes, como errores con el proveedor Microsoft.Synapse.
+- **Pipelines/** 💻: Scripts SQL (`SQL_covid_worldwide.sql`, `SQL_best_recovery.sql`) y notebooks de Spark (`nbk_covid_BZ_to_SZ.ipynb`, `nbk_covid_SZ_to_GZ.ipynb`).
+- **Data/** 📈: Archivos de datos de ejemplo (`Athletes.csv`, `covid_worldwide_rc.csv`)
+
 
 ## 🚀 Instrucciones de Configuración
 
-1. Sigue `Docs/setup_guide.md` para crear el grupo de recursos, cuenta de almacenamiento, Data Factory y Synapse Analytics. 🏗️
+1. Sigue `Laboratorio I` para crear el grupo de recursos, cuenta de almacenamiento, Data Factory y Synapse Analytics. 🏗️
 2. Carga los archivos de datos al contenedor `datotokyoolympicsgps` en Azure Data Lake Storage Gen2. 📤
 3. Importa las configuraciones de pipelines desde `/Pipelines/` a Azure Data Factory. 🔄
 4. Ejecuta los notebooks y scripts SQL en Synapse Studio según las instrucciones de los laboratorios. 💾
