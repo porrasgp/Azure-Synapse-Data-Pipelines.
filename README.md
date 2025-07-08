@@ -1,4 +1,9 @@
-¡Bienvenid@ a este repositorio! Aquí encontrarás tres laboratorios prácticos de la **Universidad Cenfotec** para construir una **arquitectura de datos moderna** en Microsoft Azure. Aprenderás a crear **pipelines de datos** usando servicios como **Azure Data Factory**, **Azure Data Lake Storage Gen2**, **Azure Synapse Analytics** y más. 🎉
+---
+title: "🚀 Arquitectura de Datos en Azure con Synapse Analytics 🌟"
+output: github_document
+---
+
+¡Bienvenid@ a este repositorio! Aquí encontrarás tres laboratorios prácticos para construir una **arquitectura de datos moderna** en Microsoft Azure. Aprenderás a crear **pipelines de datos** usando servicios como **Azure Data Factory**, **Azure Data Lake Storage Gen2**, **Azure Synapse Analytics** y más. 🎉
 
 ## 📚 Resumen de los Laboratorios
 
@@ -37,10 +42,6 @@
 - **Lab II** 📥: Usa Azure Data Factory para mover datos de `LandingZone` a `Bronze`. Importa `LZ_to_BZ_Athletes_pipeline.json` o sigue el PDF.
 - **Lab III** 📊: Transforma datos (Bronze → Silver → Gold) con Spark y crea bases de datos SQL serverless.
 
-## 🛑 Solución de Problemas
-
-Consulta `Docs/troubleshooting.md` para resolver errores, como problemas al registrar el proveedor Microsoft.Synapse o permisos insuficientes. 🧰
-
 ## 🤝 Contribuciones
 
 ¡Tu feedback es bienvenido! Crea un *issue* o envía un *pull request* para mejorar este repositorio. 💡
@@ -48,4 +49,3 @@ Consulta `Docs/troubleshooting.md` para resolver errores, como problemas al regi
 ## 📜 Licencia
 
 Este proyecto está bajo la [Licencia MIT](LICENSE). ✅
-
