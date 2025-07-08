@@ -1,0 +1,53 @@
+-- Crear el formato de archivo externo si no existe
+IF NOT EXISTS (SELECT * FROM sys.external_file_formats WHERE name = 'SynapseDelimitedTextFormat01')
+BEGIN
+    CREATE EXTERNAL FILE FORMAT SynapseDelimitedTextFormat01
+    WITH (
+        FORMAT_TYPE = DELIMITEDTEXT,
+        FORMAT_OPTIONS (
+            FIELD_TERMINATOR = ',',
+            FIRST_ROW = 2,
+            USE_TYPE_DEFAULT = TRUE
+        )
+    );
+END
+GO
+
+-- Crear la fuente de datos externa si no existe
+IF NOT EXISTS (
+    SELECT * FROM sys.external_data_sources 
+    WHERE name = 'ADFS_ExternalSource01'
+)
+BEGIN
+    CREATE EXTERNAL DATA SOURCE ADFS_ExternalSource01
+    WITH (
+        LOCATION = 'abfss://datatokioolympicsgps@tokioolympicsgps.dfs.core.windows.net'
+    );
+END
+GO
+
+-- Validar si existe la tabla externa y eliminarla si existe
+IF EXISTS (
+    SELECT * FROM sys.external_tables 
+    WHERE name = 'TBL_best_recovery_GZ'
+)
+BEGIN
+    DROP EXTERNAL TABLE dbo.TBL_best_recovery_GZ;
+END
+GO
+
+-- Crear la tabla externa
+CREATE EXTERNAL TABLE dbo.TBL_best_recovery_GZ (
+    [Country] nvarchar(4000),
+    [recovered_by_cases ] float
+)
+WITH (
+    LOCATION = 'Gold/best_recovery_GZ.csv',
+    DATA_SOURCE = ADFS_ExternalSource01,
+    FILE_FORMAT = SynapseDelimitedTextFormat01
+);
+GO
+
+-- Validar contenido
+SELECT TOP 100 * FROM dbo.TBL_best_recovery_GZ;
+GO

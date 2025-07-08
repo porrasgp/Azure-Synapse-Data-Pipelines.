@@ -1,0 +1,61 @@
+-- Crear el formato de archivo externo si no existe
+IF NOT EXISTS (
+    SELECT * FROM sys.external_file_formats 
+    WHERE name = 'SynapseDelimitedTextFormat'
+)
+BEGIN
+    CREATE EXTERNAL FILE FORMAT SynapseDelimitedTextFormat
+    WITH (
+        FORMAT_TYPE = DELIMITEDTEXT,
+        FORMAT_OPTIONS (
+            FIELD_TERMINATOR = ',',
+            FIRST_ROW = 2,
+            USE_TYPE_DEFAULT = TRUE
+        )
+    );
+END
+GO
+
+-- Crear la fuente de datos externa si no existe
+IF NOT EXISTS (
+    SELECT * FROM sys.external_data_sources 
+    WHERE name = 'ADFS_ExternalSource02'
+)
+BEGIN
+    CREATE EXTERNAL DATA SOURCE ADFS_ExternalSource02
+    WITH (
+        LOCATION = 'abfss://datatokioolympicsgps@tokioolympicsgps.dfs.core.windows.net'
+    );
+END
+GO
+
+-- Validar si existe la tabla externa y eliminarla si existe
+IF EXISTS (
+    SELECT * FROM sys.external_tables 
+    WHERE name = 'TBL_covid_worldwide_GZ'
+)
+BEGIN
+    DROP EXTERNAL TABLE dbo.TBL_covid_worldwide_GZ;
+END
+GO
+
+-- Crear la tabla externa
+CREATE EXTERNAL TABLE dbo.TBL_covid_worldwide_GZ (
+    [Country] nvarchar(4000),
+    [Total Cases] float,
+    [Total Deaths] float,
+    [Total Recovered] float,
+    [Active Cases] float,
+    [Total Tests] float,
+    [Population] float
+)
+WITH (
+    LOCATION = 'Gold/covid_worldwide_GZ.csv',
+    DATA_SOURCE = ADFS_ExternalSource02,
+    FILE_FORMAT = SynapseDelimitedTextFormat
+);
+GO
+
+-- Validar contenido
+SELECT TOP 100 * FROM dbo.TBL_covid_worldwide_GZ;
+GO
