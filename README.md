@@ -1,4 +1,4 @@
-## title: "🚀 Arquitectura de Datos en Azure con Synapse Analytics 🌟"
+## 🚀 Arquitectura de Datos en Azure con Synapse Analytics 🌟
 
 ¡Bienvenid@ a este repositorio! Aquí encontrarás tres laboratorios prácticos para construir una **arquitectura de datos moderna** en Microsoft Azure. Aprenderás a crear **pipelines de datos** usando servicios como **Azure Data Factory**, **Azure Data Lake Storage Gen2**, **Azure Synapse Analytics** y más. 🎉
 
